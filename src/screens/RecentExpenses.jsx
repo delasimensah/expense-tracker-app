@@ -1,10 +1,10 @@
-import { View, Text } from "react-native";
+import { Text, Box } from "native-base";
 
 const RecentExpenses = () => {
   return (
-    <View>
+    <Box>
       <Text>RecentExpenses</Text>
-    </View>
+    </Box>
   );
 };
 

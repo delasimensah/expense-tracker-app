@@ -1,5 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, Entypo } from "@expo/vector-icons";
+import { IconButton, Icon } from "native-base";
+import { useColorScheme } from "react-native";
+import { colors } from "../theme/colors";
+import { fonts } from "../theme/fonts";
 
 // screens
 import { RecentExpenses, AllExpenses } from "../screens";
@@ -11,36 +15,44 @@ const TAB_ICON = {
   AllExpenses: "calendar",
 };
 
-const createScreenOptions = ({ route, navigation }) => ({
-  // headerStyle: {
-  //   backgroundColor: "#2980b9"
-  // },
-  // headerTintColor: "#8e44ad",
-  // tabBarActiveTintColor: "#8e44ad",
-  tabBarInactiveTintColor: "#bdc3c7",
-  // tabBarStyle: {
-  //   backgroundColor: "#2980b9",
-  // },
-  tabBarIcon: ({ size, color }) => {
-    const iconName = TAB_ICON[route.name];
+const createScreenOptions = ({ route, navigation }) => {
+  return {
+    headerTintColor: colors.light.primary,
+    headerTitleStyle: {
+      fontFamily: fonts.body.medium,
+    },
+    tabBarLabelStyle: {
+      fontFamily: fonts.body.regular,
+    },
+    tabBarActiveTintColor: colors.light.primary,
+    tabBarIcon: ({ size, color }) => {
+      const iconName = TAB_ICON[route.name];
 
-    return <Ionicons name={iconName} size={size} color={color} />;
-  },
-  // headerRight: ({ tintColor }) => {
-  //   return (
-  //     <IconButton
-  //       icon="plus"
-  //       color={tintColor}
-  //       size={24}
-  //       onPress={() => navigation.navigate("ManageExpenses")}
-  //     />
-  //   );
-  // },
-});
+      return <Ionicons name={iconName} size={size} color={color} />;
+    },
+    headerRight: ({ tintColor }) => {
+      return (
+        <IconButton
+          icon={<Icon as={Ionicons} name="add" />}
+          borderRadius="full"
+          _icon={{
+            color: tintColor,
+            size: "lg",
+          }}
+          onPress={() => navigation.navigate("ManageExpense")}
+        />
+      );
+    },
+  };
+};
 
 const ExpensesNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={createScreenOptions}>
+    <Tab.Navigator
+      screenOptions={({ route, navigation }) =>
+        createScreenOptions({ route, navigation })
+      }
+    >
       <Tab.Screen
         name="RecentExpenses"
         component={RecentExpenses}
