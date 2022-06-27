@@ -1,8 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons, MaterialIcons, Entypo } from "@expo/vector-icons";
-import { IconButton, Icon } from "native-base";
-import { useColorScheme } from "react-native";
-import { colors } from "../theme/colors";
+import { Ionicons } from "@expo/vector-icons";
+import { IconButton, Icon, useTheme } from "native-base";
+import { sharedScreenOptions } from "./sharedScreenOptions";
 import { fonts } from "../theme/fonts";
 
 // screens
@@ -15,28 +14,27 @@ const TAB_ICON = {
   AllExpenses: "calendar",
 };
 
-const createScreenOptions = ({ route, navigation }) => {
+const createScreenOptions = ({ route, navigation, theme }) => {
+  const { colors } = theme;
+
   return {
-    headerTintColor: colors.light.primary,
-    headerTitleStyle: {
+    ...sharedScreenOptions,
+    tabBarLabelStyle: {
       fontFamily: fonts.body.medium,
     },
-    tabBarLabelStyle: {
-      fontFamily: fonts.body.regular,
-    },
-    tabBarActiveTintColor: colors.light.primary,
+    tabBarInactiveTintColor: colors.gray[400],
     tabBarIcon: ({ size, color }) => {
       const iconName = TAB_ICON[route.name];
 
       return <Ionicons name={iconName} size={size} color={color} />;
     },
-    headerRight: ({ tintColor }) => {
+    headerRight: () => {
       return (
         <IconButton
           icon={<Icon as={Ionicons} name="add" />}
           borderRadius="full"
           _icon={{
-            color: tintColor,
+            color: "brand.primary",
             size: "lg",
           }}
           onPress={() => navigation.navigate("ManageExpense")}
@@ -47,10 +45,12 @@ const createScreenOptions = ({ route, navigation }) => {
 };
 
 const ExpensesNavigator = () => {
+  const theme = useTheme();
+
   return (
     <Tab.Navigator
       screenOptions={({ route, navigation }) =>
-        createScreenOptions({ route, navigation })
+        createScreenOptions({ route, navigation, theme })
       }
     >
       <Tab.Screen

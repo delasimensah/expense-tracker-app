@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { sharedScreenOptions } from "./sharedScreenOptions";
 
 // navigators
 import ExpensesNavigator from "./ExpensesNavigator";
@@ -10,7 +11,11 @@ const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        ...sharedScreenOptions,
+      }}
+    >
       <Stack.Screen
         name="ExpenseOverview"
         component={ExpensesNavigator}
@@ -24,6 +29,7 @@ const AppNavigator = () => {
         component={ManageExpense}
         options={{
           presentation: "modal",
+          title: "Manage Expense",
         }}
       />
     </Stack.Navigator>
