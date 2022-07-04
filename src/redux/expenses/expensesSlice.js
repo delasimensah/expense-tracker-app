@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { dummyExpenses } from "../../utils";
 
 const initialState = {
-  expense: [],
+  expenses: dummyExpenses,
 };
 
 const expensesSlice = createSlice({

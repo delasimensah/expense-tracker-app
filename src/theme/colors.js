@@ -1,5 +1,5 @@
 export const colors = {
   brand: {
-    primary: "#2ecc71",
+    primary: "#8e44ad",
   },
 };
