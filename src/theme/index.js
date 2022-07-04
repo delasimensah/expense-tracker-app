@@ -8,8 +8,8 @@ export const theme = extendTheme({
   colors,
   fontConfig,
   fonts: {
-    heading: "Raleway",
-    body: "Raleway",
+    heading: "Nunito",
+    body: "Nunito",
   },
 });
 

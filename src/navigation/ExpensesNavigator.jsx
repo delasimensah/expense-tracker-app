@@ -20,7 +20,7 @@ const createScreenOptions = ({ route, navigation, theme }) => {
   return {
     ...sharedScreenOptions,
     tabBarLabelStyle: {
-      fontFamily: fonts.body.medium,
+      fontFamily: fonts.nunito.medium,
     },
     tabBarInactiveTintColor: colors.gray[400],
     tabBarIcon: ({ size, color }) => {

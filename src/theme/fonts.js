@@ -1,25 +1,25 @@
 export const fonts = {
-  body: {
-    light: "Raleway_300Light",
-    regular: "Raleway_400Regular",
-    medium: "Raleway_500Medium",
-    bold: "Raleway_700Bold",
+  nunito: {
+    light: "Nunito_300Light",
+    regular: "Nunito_400Regular",
+    medium: "Nunito_500Medium",
+    bold: "Nunito_700Bold",
   },
 };
 
 export const fontConfig = {
-  Raleway: {
+  Nunito: {
     300: {
-      normal: fonts.body.light,
+      normal: fonts.nunito.light,
     },
     400: {
-      normal: fonts.body.regular,
+      normal: fonts.nunito.regular,
     },
     500: {
-      normal: fonts.body.medium,
+      normal: fonts.nunito.medium,
     },
     700: {
-      normal: fonts.body.bold,
+      normal: fonts.nunito.bold,
     },
   },
 };
