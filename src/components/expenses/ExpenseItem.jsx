@@ -24,7 +24,7 @@ const ExpenseItem = ({ item }) => {
           justifyContent="space-between"
           bgColor="white"
           shadow="1"
-          opacity={isPressed ? 70 : 100}
+          opacity={isPressed ? 95 : 100}
         >
           <VStack>
             <Text fontSize="md" bold>
