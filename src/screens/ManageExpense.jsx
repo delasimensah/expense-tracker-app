@@ -124,29 +124,33 @@ const ManageExpense = ({ navigation, route }) => {
           </FormControl>
         </VStack>
 
-        <VStack space={2}>
-          <Button
-            backgroundColor="brand.primary"
-            onPress={handleSubmit}
-            // isLoading
-          >
-            {expenseId ? "Update" : "Add"}
-          </Button>
+        <HStack space={1}>
+          <Box flex={1}>
+            <Button
+              backgroundColor="brand.primary"
+              onPress={handleSubmit}
+              // isLoading
+            >
+              {expenseId ? "Update" : "Add"}
+            </Button>
+          </Box>
 
           {expenseId && (
-            <Button
-              borderColor="error.500"
-              _text={{ color: "error.500" }}
-              variant="outline"
-              // isLoading
-              _spinner={{
-                color: "error.500",
-              }}
-            >
-              Delete Expense
-            </Button>
+            <Box flex={1}>
+              <Button
+                borderColor="error.500"
+                _text={{ color: "error.500" }}
+                variant="outline"
+                // isLoading
+                _spinner={{
+                  color: "error.500",
+                }}
+              >
+                Delete Expense
+              </Button>
+            </Box>
           )}
-        </VStack>
+        </HStack>
 
         <Box width="100%">
           <DatePicker
