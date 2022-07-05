@@ -11,6 +11,17 @@ export const theme = extendTheme({
     heading: "Nunito",
     body: "Nunito",
   },
+  components: {
+    Input: {
+      baseStyle: {
+        _light: {
+          _focus: {
+            borderColor: "brand.primary",
+          },
+        },
+      },
+    },
+  },
 });
 
 export const navigationTheme = {

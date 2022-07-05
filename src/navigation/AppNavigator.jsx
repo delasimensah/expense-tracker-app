@@ -29,7 +29,6 @@ const AppNavigator = () => {
         component={ManageExpense}
         options={{
           presentation: "modal",
-          title: "Manage Expense",
         }}
       />
     </Stack.Navigator>
